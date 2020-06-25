@@ -12,6 +12,7 @@ export class AppComponent {
   producto: FormGroup;
   productos;
   editar=false;
+  crear=false;
   product;
 
   constructor(private productosServicesProvider: ProductosServicesProvider, private fb: FormBuilder) 
@@ -27,6 +28,7 @@ export class AppComponent {
     crearProducto(){
       this.productosServicesProvider.crearProducto(this.producto.value);
       console.log(this.producto.value)
+      this.crear=false;
       window.location.reload();
     }
     
@@ -49,6 +51,10 @@ export class AppComponent {
     vistaEditar(producto){
       this.editar=true;
       this.product=producto;
+    }
+
+    vistaCrear(){
+      this.crear=true;
     }
 
     editarProducto(){

@@ -10,8 +10,8 @@
     <tr>
       <th>Producto</th>
       <th>Descripción</th>
-      <th class="text-right">precio</th>
-      <th class="text-right">---</th>
+      <th class="text-right">Precio</th>
+      <th class="text-right">------</th>
   </thead>
   <tbody>
     <tr *ngFor="let pro of productos">
@@ -31,7 +31,10 @@
 </table>
 </div>
 <br>
-<form class="form-dark" [formGroup]="producto" (ngSubmit)="crearProducto()">
+<button type="button" rel="tooltip" class="btn btn-dark btn-lg btn-block" (click)="vistaCrear()" *ngIf="crear==false">
+  <i class="tim-icons icon-settings-gear-63">Añadir</i>
+</button>
+<form class="form-dark" [formGroup]="producto" (ngSubmit)="crearProducto()" *ngIf="crear">
 
   <div class="form-row">
     <div class="col">
@@ -41,7 +44,7 @@
       <input id="descripcion" type="text" class="form-control bg-dark" placeholder="Descripcion de producto" formControlName="descripcion">
     </div>
     <div class="col">
-      <input id="precio" type="text" class="form-control bg-dark" placeholder="Precio del producto" formControlName="precio">
+      <input id="precio" type="number" class="form-control bg-dark" placeholder="Precio del producto" formControlName="precio">
     </div>
     <div>
       <button class="btn btn-info btn-icon" type="submit">crear</button>
@@ -52,7 +55,6 @@
 <br>
 <br>
 <form class="form-dark" [formGroup]="producto" (ngSubmit)="editarProducto()" *ngIf="editar" >
-  <h4>Editar</h4>
   <div class="form-row">
     <div class="col">
       <input id="nombre" type="text" class="form-control bg-dark" placeholder="Nombre del producto" formControlName="nombre">
@@ -61,7 +63,7 @@
       <input id="descripcion" type="text" class="form-control bg-dark" placeholder="Descripcion de producto" formControlName="descripcion">
     </div>
     <div class="col">
-      <input id="precio" type="text" class="form-control bg-dark" placeholder="Precio del producto" formControlName="precio">
+      <input id="precio" type="number" class="form-control bg-dark" placeholder="Precio del producto" formControlName="precio">
     </div>
     <div>
       <button class="btn btn-info btn-icon" type="submit">Editar</button>
