@@ -33,6 +33,18 @@ export class ProductosServicesProvider {
       return this.http.delete(this.apiUrl+producto);
   }
 
-
-
+  public editarProducto(producto, mood){
+    const headers = new HttpHeaders()
+        .set('Authorization', 'my-auth-token')
+        .set('Content-Type', 'application/json');
+    try {
+        return this.http.patch(this.apiUrl+producto, JSON.stringify(mood),{
+        headers: headers
+      }).subscribe(
+        data => {console.log(data);}
+      );
+    } catch (error) {
+      console.log("hasta aqui llego");
+    }
+  }
 }

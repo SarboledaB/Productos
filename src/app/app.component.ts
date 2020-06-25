@@ -11,6 +11,8 @@ import { ProductosServicesProvider } from '../providers/productos-service/produc
 export class AppComponent {
   producto: FormGroup;
   productos;
+  editar=false;
+  product;
 
   constructor(private productosServicesProvider: ProductosServicesProvider, private fb: FormBuilder) 
     {
@@ -41,6 +43,19 @@ export class AppComponent {
       this.productosServicesProvider.borrarProducto(producto).subscribe(
         (data) => {console.log(data);}
       );
+      window.location.reload();
+    }
+
+    vistaEditar(producto){
+      this.editar=true;
+      this.product=producto;
+    }
+
+    editarProducto(){
+      console.log(this.product);
+      console.log(this.producto.value)
+      this.productosServicesProvider.editarProducto(this.product, this.producto.value);
+      this.editar=true;
       window.location.reload();
     }
 }
