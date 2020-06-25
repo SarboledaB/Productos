@@ -1,0 +1,52 @@
+<header class="bg-dark">
+  <h1 class="text-center text-white">Productos</h1>
+  <br>
+</header>
+<br>
+<br>
+<div class="container">
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th>Producto</th>
+      <th>Descripción</th>
+      <th class="text-right">precio</th>
+      <th class="text-right">---</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pro of productos">
+            <td >{{ pro.nombre }}</td>
+            <td >{{ pro.descripcion }}</td>
+            <td class="text-right ">${{ pro.precio }}</td>
+            <td class="td-actions text-right">
+                <button type="button" rel="tooltip" class="btn btn-danger btn-sm btn-icon" (click)="borrarProducto(pro._id)">
+                    <i class="tim-icons icon-single-02">Borrar</i>
+                </button>
+                <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-icon">
+                    <i class="tim-icons icon-settings-gear-63">Editar</i>
+                </button>
+            </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<br>
+<form class="form-dark" [formGroup]="producto" (ngSubmit)="crearProducto()">
+
+  <div class="form-row">
+    <div class="col">
+      <input id="nombre" type="text" class="form-control bg-dark" placeholder="Nombre del producto" formControlName="nombre">
+    </div>
+    <div class="col">
+      <input id="descripcion" type="text" class="form-control bg-dark" placeholder="Descripcion de producto" formControlName="descripcion">
+    </div>
+    <div class="col">
+      <input id="precio" type="text" class="form-control bg-dark" placeholder="Precio del producto" formControlName="precio">
+    </div>
+    <div>
+      <button class="btn btn-info btn-icon" type="submit">crear</button>
+    </div>
+  </div>
+  
+</form>
+
