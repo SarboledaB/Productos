@@ -26,25 +26,37 @@ export class AppComponent {
     }
 
     crearProducto(){
-      this.productosServicesProvider.crearProducto(this.producto.value);
-      console.log(this.producto.value)
-      this.crear=false;
+      try {
+        this.productosServicesProvider.crearProducto(this.producto.value);
+        console.log(this.producto.value)
+        this.crear=false;
+      } catch (error) {
+        
+      }
       window.location.reload();
     }
     
     traerProductos(){
-      this.productosServicesProvider.listarProductos().subscribe(
-        (data) => {
-          console.log(data);
-          this.productos = data;
-        }
-      );
+      try {
+        this.productosServicesProvider.listarProductos().subscribe(
+          (data) => {
+            console.log(data);
+            this.productos = data;
+          }
+        );
+      } catch (error) {
+        
+      }
     }
 
     borrarProducto(producto){
-      this.productosServicesProvider.borrarProducto(producto).subscribe(
-        (data) => {console.log(data);}
-      );
+      try {
+        this.productosServicesProvider.borrarProducto(producto).subscribe(
+          (data) => {console.log(data);}
+        );
+      } catch (error) {
+        
+      }
       window.location.reload();
     }
 
@@ -58,10 +70,14 @@ export class AppComponent {
     }
 
     editarProducto(){
-      console.log(this.product);
-      console.log(this.producto.value)
-      this.productosServicesProvider.editarProducto(this.product, this.producto.value);
-      this.editar=true;
+      try {
+        console.log(this.product);
+        console.log(this.producto.value)
+        this.productosServicesProvider.editarProducto(this.product, this.producto.value);
+        this.editar=true;
+      } catch (error) {
+        
+      }
       window.location.reload();
     }
 }

@@ -31,9 +31,11 @@
 </table>
 </div>
 <br>
-<button type="button" rel="tooltip" class="btn btn-dark btn-lg btn-block" (click)="vistaCrear()" *ngIf="crear==false">
-  <i class="tim-icons icon-settings-gear-63">Añadir</i>
-</button>
+<div class="container">
+  <button type="button" rel="tooltip" class="btn btn-dark btn-block text-center" (click)="vistaCrear()" *ngIf="crear==false && editar==false ">
+    <i class="tim-icons icon-settings-gear-63">Añadir</i>
+  </button>
+</div>
 <form class="form-dark" [formGroup]="producto" (ngSubmit)="crearProducto()" *ngIf="crear">
 
   <div class="form-row">
