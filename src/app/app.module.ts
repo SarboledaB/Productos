@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-// Providers
+// Import de los providers
 import { ProviderSettingsProvider } from '../providers/providers-settings/provider-settings';
 import { ProductosServicesProvider } from '../providers/productos-service/productos-service';
 

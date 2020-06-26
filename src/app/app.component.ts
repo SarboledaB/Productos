@@ -9,6 +9,8 @@ import { ProductosServicesProvider } from '../providers/productos-service/produc
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  //variables globales
   producto: FormGroup;
   productos;
   editar=false;
@@ -25,6 +27,7 @@ export class AppComponent {
         this.traerProductos();
     }
 
+    //Llamado al provider para crear nuevo producto
     crearProducto(){
       try {
         this.productosServicesProvider.crearProducto(this.producto.value);
@@ -36,6 +39,7 @@ export class AppComponent {
       window.location.reload();
     }
     
+    //Llamado al provider para listar los productos actuales
     traerProductos(){
       try {
         this.productosServicesProvider.listarProductos().subscribe(
@@ -49,6 +53,7 @@ export class AppComponent {
       }
     }
 
+    //Llamado al provider para eliminar el producto seleccionado
     borrarProducto(producto){
       try {
         this.productosServicesProvider.borrarProducto(producto).subscribe(
@@ -60,15 +65,7 @@ export class AppComponent {
       window.location.reload();
     }
 
-    vistaEditar(producto){
-      this.editar=true;
-      this.product=producto;
-    }
-
-    vistaCrear(){
-      this.crear=true;
-    }
-
+    ////Llamado al provider para editar el producto seleccionado
     editarProducto(){
       try {
         console.log(this.product);
@@ -80,4 +77,15 @@ export class AppComponent {
       }
       window.location.reload();
     }
+
+    //las vistas controlan que los formularios de los botones aparezcan
+    vistaEditar(producto){
+      this.editar=true;
+      this.product=producto;
+    }
+
+    vistaCrear(){
+      this.crear=true;
+    }
+
 }
